@@ -3,6 +3,8 @@ import pluralize from 'pluralize'
 
 import SchemaGenerator from './schemaGenerator'
 
+import ModelAttribute from './modelAttribute'
+
 class Model {
   constructor(name, attributes) {
     this.name = name
@@ -13,9 +15,13 @@ class Model {
     // TODO: add indexes
   }
 
-  generateSchemaFile() {
+  addNewAttribute() {
+    this.attributes.push(new ModelAttribute())
+  }
+
+  async generateSchemaFile() {
     const schemaGenerator = new SchemaGenerator(this)
-    schemaGenerator.build()
+    return await schemaGenerator.build()
   }
 }
 

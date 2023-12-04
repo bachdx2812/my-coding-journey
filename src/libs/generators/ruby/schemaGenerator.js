@@ -8,12 +8,12 @@ class SchemaGenerator {
     this.content = ''
   }
 
-  build() {
+  async build() {
     const template = new LiquidTemplate(SchemaFileContentTemplate, {
       model: this.model
     })
 
-    template.render().then(console.log)
+    return await template.render()
   }
 }
 
