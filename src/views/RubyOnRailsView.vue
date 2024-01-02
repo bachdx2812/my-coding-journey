@@ -54,11 +54,23 @@
       </v-col>
 
       <v-col>
-        <v-textarea
-          auto-grow
-          v-model="model.schemaScript"
-          :label="`${model.tableName}.schema`"
-        ></v-textarea>
+        <v-container>
+          <v-row>
+            <v-textarea
+              auto-grow
+              v-model="model.schemaScript"
+              :label="`${model.tableName}.schema`"
+            ></v-textarea>
+          </v-row>
+
+          <v-row>
+            <v-textarea
+              auto-grow
+              v-model="model.modelScript"
+              :label="`${model.modelFileName}.rb`"
+            ></v-textarea>
+          </v-row>
+        </v-container>
       </v-col>
     </v-row>
   </v-container>
@@ -80,7 +92,8 @@ function removeAttribute(attribute) {
 }
 
 async function generate() {
-  await model.generateSchemaFile()
+  await model.generateSchemaScript()
+  await model.generateModelScript()
 }
 
 import { useBreadcrumb } from '@bachdx/b-vuse'

@@ -1,7 +1,8 @@
-import { remove, snakeCase } from 'lodash'
+import { lowerCase, snakeCase, upperFirst } from 'lodash'
 import pluralize from 'pluralize'
 
 import SchemaGenerator from './schemaGenerator'
+import ModelGenerator from './modelGenerator'
 
 import ModelAttribute from './modelAttribute'
 
@@ -14,11 +15,14 @@ class Model {
     // TODO: add indexes
 
     this.schemaScript = null
+    this.modelScript = null
   }
 
   setName(name) {
     this.name = name
     this.tableName = snakeCase(pluralize(this.name))
+    this.className = upperFirst(this.name)
+    this.modelFileName = lowerCase(this.name)
   }
 
   addNewAttribute() {
@@ -30,9 +34,14 @@ class Model {
     this.attributes.splice(removeIndex, 1)
   }
 
-  async generateSchemaFile() {
+  async generateSchemaScript() {
     const schemaGenerator = new SchemaGenerator(this)
     this.schemaScript = await schemaGenerator.build()
+  }
+
+  async generateModelScript() {
+    const modelGenerator = new ModelGenerator(this)
+    this.modelScript = await modelGenerator.build()
   }
 }
 
