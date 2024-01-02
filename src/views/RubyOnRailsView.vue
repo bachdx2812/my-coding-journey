@@ -1,0 +1,63 @@
+<template>
+  <v-container fluid>
+    <v-row>
+      <v-col>
+        <v-sheet width="600" class="mx-auto">
+          <v-form @submit.prevent>
+            <v-row>
+              <v-text-field v-model="model.name" label="Model name"></v-text-field>
+            </v-row>
+
+            <v-row>
+              <v-btn type="button" block class="mt-2" @click="addNewAttribute">Add Attribute</v-btn>
+            </v-row>
+
+            <div v-for="attribute in model.attributes">
+              <v-row>
+                <v-col>
+                  <v-text-field v-model="attribute.name" label="Attribute name"></v-text-field>
+                </v-col>
+
+                <v-col>
+                  <v-combobox
+                    v-model="attribute.type"
+                    clearable
+                    chips
+                    label="Attribute name"
+                    :items="['string', 'text', 'bigint', 'integer', 'boolean']"
+                  ></v-combobox>
+                </v-col>
+              </v-row>
+            </div>
+
+            <v-btn type="submit" block class="mt-2" @click="generateSchemaFile">Submit</v-btn>
+          </v-form>
+        </v-sheet>
+      </v-col>
+
+      <v-col>
+        <v-textarea
+          auto-grow
+          v-model="model.schemaScript"
+          :label="`${model.tableName}.schema`"
+        ></v-textarea>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script setup>
+import { reactive } from 'vue'
+
+import Model from '@/libs/generators/ruby/model'
+
+const model = reactive(new Model('UserBook', []))
+
+function addNewAttribute() {
+  model.addNewAttribute()
+}
+
+async function generateSchemaFile() {
+  await model.generateSchemaFile()
+}
+</script>

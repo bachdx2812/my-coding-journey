@@ -1,66 +1,21 @@
-<script setup></script>
-
 <template>
-  <v-container fluid>
-    <v-row>
-      <v-col>
-        <v-sheet width="600" class="mx-auto">
-          <v-form @submit.prevent>
-            <v-row>
-              <v-text-field v-model="model.name" label="Model name"></v-text-field>
-            </v-row>
-
-            <v-row>
-              <v-btn type="button" block class="mt-2" @click="addNewAttribute">Add Attribute</v-btn>
-            </v-row>
-
-            <div v-for="attribute in model.attributes">
-              <v-row>
-                <v-col>
-                  <v-text-field v-model="attribute.name" label="Attribute name"></v-text-field>
-                </v-col>
-
-                <v-col>
-                  <v-combobox
-                    v-model="attribute.type"
-                    clearable
-                    chips
-                    label="Attribute name"
-                    :items="['string', 'text', 'bigint', 'integer', 'boolean']"
-                  ></v-combobox>
-                </v-col>
-              </v-row>
-            </div>
-
-            <v-btn type="submit" block class="mt-2" @click="generateSchemaFile">Submit</v-btn>
-          </v-form>
-        </v-sheet>
-      </v-col>
-
-      <v-col>
-        <v-textarea
-          auto-grow
-          v-model="model.schemaScript"
-          :label="`${model.tableName}.schema`"
-        ></v-textarea>
+  <v-container>
+    <v-row align="center" justify="center">
+      <v-col v-for="item in supportedLanguages" :key="item.text" cols="auto">
+        <v-card
+          class="mx-auto"
+          max-width="344"
+          :title="item.name"
+          color="#E0115F"
+          :prepend-icon="item.icon"
+          :href="item.path"
+        >
+          <v-card-text>{{ item.description }}</v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
-
 <script setup>
-import { ref, reactive } from 'vue'
-
-import ModelAttribute from '@/libs/generators/ruby/modelAttribute'
-import Model from '@/libs/generators/ruby/model'
-
-const model = reactive(new Model('UserBook', []))
-
-function addNewAttribute() {
-  model.addNewAttribute()
-}
-
-async function generateSchemaFile() {
-  await model.generateSchemaFile()
-}
+import supportedLanguages from '../constants/supportedLanguages'
 </script>

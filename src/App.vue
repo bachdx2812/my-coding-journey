@@ -1,14 +1,22 @@
-<script setup>
-import { RouterView } from 'vue-router'
-</script>
-
 <template>
   <v-layout class="rounded rounded-md">
     <v-app-bar title="Application bar"></v-app-bar>
 
     <v-navigation-drawer>
-      <v-list>
-        <v-list-item title="Navigation drawer"></v-list-item>
+      <v-list density="compact">
+        <v-list-item
+          v-for="(item, i) in supportedLanguages"
+          :key="i"
+          :value="item"
+          color="primary"
+          :to="item.path"
+        >
+          <template v-slot:prepend>
+            <v-icon :icon="item.icon" :color="item.color"></v-icon>
+          </template>
+
+          <v-list-item-title v-text="item.name"></v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -18,4 +26,8 @@ import { RouterView } from 'vue-router'
   </v-layout>
 </template>
 
-<style scoped></style>
+<script setup>
+import { RouterView } from 'vue-router'
+
+import supportedLanguages from './constants/supportedLanguages'
+</script>
