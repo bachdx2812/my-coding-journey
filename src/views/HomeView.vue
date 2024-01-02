@@ -21,7 +21,13 @@
                 </v-col>
 
                 <v-col>
-                  <v-text-field v-model="attribute.type" label="Attribute name"></v-text-field>
+                  <v-combobox
+                    v-model="attribute.type"
+                    clearable
+                    chips
+                    label="Attribute name"
+                    :items="['string', 'text', 'bigint', 'integer', 'boolean']"
+                  ></v-combobox>
                 </v-col>
               </v-row>
             </div>
@@ -32,7 +38,11 @@
       </v-col>
 
       <v-col>
-        <v-textarea v-model="result" label="Result"></v-textarea>
+        <v-textarea
+          auto-grow
+          v-model="model.schemaScript"
+          :label="`${model.tableName}.schema`"
+        ></v-textarea>
       </v-col>
     </v-row>
   </v-container>
@@ -45,15 +55,12 @@ import ModelAttribute from '@/libs/generators/ruby/modelAttribute'
 import Model from '@/libs/generators/ruby/model'
 
 const model = reactive(new Model('UserBook', []))
-const result = ref('')
 
 function addNewAttribute() {
   model.addNewAttribute()
 }
 
 async function generateSchemaFile() {
-  result.value = await model.generateSchemaFile()
-
-  console.log(result.value)
+  await model.generateSchemaFile()
 }
 </script>
