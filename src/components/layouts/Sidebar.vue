@@ -5,7 +5,7 @@
         <Logo></Logo>
       </div>
       <div class="mt-6 text-gray-400">
-        <p class="mt-5 mb-5 font-mono text-sm">/* your web <br />development <br />manual */</p>
+        <p class="mt-5 mb-5 font-mono text-sm">/* My web <br />development <br />having fun */</p>
         <!-- <p class="mt-5 mb-5 font-mono text-sm" id="last-updated">Updated 4 days ago</p> -->
       </div>
       <div class="mt-0 text-emerald-400 font-mono text-sm">
