@@ -1,6 +1,6 @@
 <template>
   <v-layout class="rounded rounded-md">
-    <v-app-bar title="Application bar"></v-app-bar>
+    <v-app-bar title="Code Generator"></v-app-bar>
 
     <v-navigation-drawer>
       <v-list density="compact">
@@ -21,7 +21,17 @@
     </v-navigation-drawer>
 
     <v-main class="d-flex align-center justify-center" style="min-height: 300px">
-      <RouterView />
+      <v-container fluid>
+        <v-row>
+          <v-breadcrumbs :items="breadcrumb.items">
+            <template v-slot:title="{ item }">
+              {{ item.text }}
+            </template>
+          </v-breadcrumbs>
+        </v-row>
+
+        <RouterView />
+      </v-container>
     </v-main>
   </v-layout>
 </template>
@@ -30,4 +40,9 @@
 import { RouterView } from 'vue-router'
 
 import supportedLanguages from './constants/supportedLanguages'
+
+import { useBreadcrumb } from '@bachdx/b-vuse'
+const { breadcrumb, getBreadcrumb } = useBreadcrumb()
+
+getBreadcrumb()
 </script>

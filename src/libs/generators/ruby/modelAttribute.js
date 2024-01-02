@@ -1,8 +1,10 @@
 import { Liquid } from 'liquidjs'
 import { AttributeLineTemplate } from '../templates/schemaFileTemplate'
+import { v4 as uuidv4 } from 'uuid'
 
 class ModelAttribute {
   constructor(name, type) {
+    this.id = uuidv4()
     this.name = name
     this.type = type
     // TODO: add default
