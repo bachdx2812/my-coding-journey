@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import HomeView from '../views/HomeView.vue'
-
-import supportedLanguages from '../constants/supportedLanguages'
+import AboutView from '../views/AboutView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -12,7 +11,11 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     },
-    ...supportedLanguages
+    {
+      path: '/about',
+      name: 'about',
+      component: AboutView
+    }
   ]
 })
 

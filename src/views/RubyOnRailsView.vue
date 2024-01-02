@@ -95,21 +95,4 @@ async function generate() {
   await model.generateSchemaScript()
   await model.generateModelScript()
 }
-
-import { useBreadcrumb } from '@bachdx/b-vuse'
-const { setBreadcrumb } = useBreadcrumb()
-
-setBreadcrumb({
-  title: 'Generator',
-  items: [
-    {
-      text: 'Home Page',
-      href: '/'
-    },
-    {
-      text: 'Ruby On Rails',
-      active: true
-    }
-  ]
-})
 </script>

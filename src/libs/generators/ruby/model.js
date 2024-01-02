@@ -21,8 +21,8 @@ class Model {
   setName(name) {
     this.name = name
     this.tableName = snakeCase(pluralize(this.name))
-    this.className = upperFirst(this.name)
-    this.modelFileName = lowerCase(this.name)
+    this.className = upperFirst(pluralize(this.name, 1))
+    this.modelFileName = lowerCase(pluralize(this.name, 1))
   }
 
   addNewAttribute() {

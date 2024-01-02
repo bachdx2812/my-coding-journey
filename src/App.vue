@@ -1,48 +1,19 @@
 <template>
-  <v-layout class="rounded rounded-md">
-    <v-app-bar title="Code Generator"></v-app-bar>
+  <div class="px-10">
+    <div class="flex flex-row flex-wrap px-3">
+      <Sidebar></Sidebar>
 
-    <v-navigation-drawer>
-      <v-list density="compact">
-        <v-list-item
-          v-for="(item, i) in supportedLanguages"
-          :key="i"
-          :value="item"
-          color="primary"
-          :to="item.path"
-        >
-          <template v-slot:prepend>
-            <v-icon :icon="item.icon" :color="item.color"></v-icon>
-          </template>
-
-          <v-list-item-title v-text="item.name"></v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
-    <v-main class="d-flex align-center justify-center" style="min-height: 300px">
-      <v-container fluid>
-        <v-row>
-          <v-breadcrumbs :items="breadcrumb.items">
-            <template v-slot:title="{ item }">
-              {{ item.text }}
-            </template>
-          </v-breadcrumbs>
-        </v-row>
-
-        <RouterView />
-      </v-container>
-    </v-main>
-  </v-layout>
+      <section class="w-full xs:w-1/2 sm:w-2/3">
+        <div class="mb-20">
+          <RouterView />
+        </div>
+      </section>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { RouterView } from 'vue-router'
 
-import supportedLanguages from './constants/supportedLanguages'
-
-import { useBreadcrumb } from '@bachdx/b-vuse'
-const { breadcrumb, getBreadcrumb } = useBreadcrumb()
-
-getBreadcrumb()
+import Sidebar from '@/components/layouts/Sidebar.vue'
 </script>

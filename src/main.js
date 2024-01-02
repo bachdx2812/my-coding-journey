@@ -1,4 +1,4 @@
-import './assets/main.css'
+import './assets/main.scss'
 import '@mdi/font/css/materialdesignicons.css'
 
 import { createApp } from 'vue'
@@ -22,6 +22,17 @@ const vuetify = createVuetify({
     aliases,
     sets: {
       mdi
+    }
+  },
+  theme: {
+    defaultTheme: 'myCustomTheme',
+    themes: {
+      myCustomTheme: {
+        dark: true,
+        colors: {
+          background: '#292B36'
+        }
+      }
     }
   }
 })
