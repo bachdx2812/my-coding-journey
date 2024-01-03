@@ -7,7 +7,7 @@
         class="mx-auto"
         max-width="344"
         min-height="150"
-        :title="item.name"
+        :title="item.shortName"
         :color="item.color"
         :prepend-icon="item.icon"
         :href="item.path"
