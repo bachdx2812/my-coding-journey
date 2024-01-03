@@ -20,9 +20,7 @@
         <header>
           <div class="pt-3 text-lg title white leading-[1.1em] mb-0">
             <span class="pb-16 borderbottom leading-[24px]">
-              <a href="/the-internet" id="the-internet" class="">
-                <span class="text-[#e1e1e1] mr-2 font-serif font-bold"> Core Functions </span>
-              </a>
+              <span class="text-[#e1e1e1] mr-2 font-serif font-bold"> Core Functions </span>
             </span>
           </div>
         </header>
