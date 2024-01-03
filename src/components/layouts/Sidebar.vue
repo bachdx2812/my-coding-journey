@@ -13,14 +13,21 @@
         <p><a href="/about">[about]</a></p>
       </div>
       <div class="mt-6">
-        <table class="text-sm tracking-[-0.5px]">
+        <table class="text-emerald-400 tracking-[-0.5px]">
           <tbody>
-            <tr>
-              <td><span class="text-[#e1e1e1] mr-2 font-mono"> 1: </span></td>
+            <tr v-for="(item, index) in sidebarMenus">
               <td>
-                <router-link class="text-white hover:underline" to="/tools_and_libraries"
-                  >Tools And Libraries</router-link
+                <span class="mr-2 font-mono"> {{ index }}: </span>
+              </td>
+              <td>
+                <span class="text-yellow-300" v-if="item.active"> ▶︎ </span>
+                <router-link
+                  class="hover:underline"
+                  :class="{ 'underline !text-yellow-300': item.active }"
+                  :to="item.path"
                 >
+                  {{ item.title }}
+                </router-link>
               </td>
             </tr>
           </tbody>
@@ -35,5 +42,12 @@
 </template>
 
 <script setup>
+import { storeToRefs } from 'pinia'
+
 import Logo from '@/components/layouts/Logo.vue'
+
+import { useGlobalStore } from '@/stores/global'
+const globalStore = useGlobalStore()
+
+const { sidebarMenus } = storeToRefs(globalStore)
 </script>

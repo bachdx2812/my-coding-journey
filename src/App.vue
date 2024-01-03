@@ -26,4 +26,18 @@ import Sidebar from '@/components/layouts/Sidebar.vue'
 
 const globalStore = useGlobalStore()
 const { loading } = storeToRefs(globalStore)
+
+import { watch } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+
+watch(
+  () => route.fullPath,
+  async () => {
+    globalStore.resetSidebarMenus()
+  }
+)
+
+globalStore.resetSidebarMenus()
 </script>

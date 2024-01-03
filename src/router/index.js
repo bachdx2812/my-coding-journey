@@ -8,6 +8,17 @@ import RoadmapView from '../views/RoadmapView.vue'
 import toolsRouters from './tools'
 
 const router = createRouter({
+  scrollBehavior(to, _from, _savedPosition) {
+    // always scroll to top
+    if (to.hash) {
+      return {
+        el: to.hash,
+        behavior: 'smooth'
+      }
+    }
+
+    return { top: 0, behavior: 'smooth' }
+  },
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {

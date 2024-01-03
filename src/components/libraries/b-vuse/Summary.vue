@@ -5,7 +5,8 @@
         <div class="leading-[64px]">
           <span class="text-4xl font-bold">
             <span class="mr-2 text-[#e1e1e1] tracking-tight font-serif">
-              b-vuse ( Inspired by <a href="https://vueuse.org/">VueUse</a> )
+              b-vuse , a collection of VueJS composables ( Inspired by
+              <a href="https://vueuse.org/">VueUse</a> )
             </span>
           </span>
         </div>
@@ -38,9 +39,9 @@
                       <span class="text-[#e1e1e1] mr-2">{{ index + 1 }}: </span>
                     </td>
                     <td>
-                      <a class="hover:underline" :href="item.url" target="_blank">{{
-                        item.name
-                      }}</a>
+                      <a :href="item.path" class="hover:underline">
+                        {{ item.title }}
+                      </a>
                     </td>
                   </tr>
                 </tbody>
@@ -54,14 +55,5 @@
 </template>
 
 <script setup>
-const functions = [
-  {
-    name: 'useBreadcrumb',
-    url: 'https://github.com/bachdx2812/b-vuse?tab=readme-ov-file#usebreadcrumb'
-  },
-  {
-    name: 'useQuery',
-    url: 'https://github.com/bachdx2812/b-vuse?tab=readme-ov-file#usequery'
-  }
-]
+const functions = defineModel()
 </script>

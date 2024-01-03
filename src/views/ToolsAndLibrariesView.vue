@@ -1,7 +1,7 @@
 <template>
-  <PageHeader title="My Self Made Tools And Libraries" />
+  <PageHeader title="Tools And Libraries" />
 
-  <v-row align="center" justify="center">
+  <v-row>
     <v-col v-for="item in toolsAndLibraries" :key="item.text" cols="auto">
       <v-card
         class="mx-auto"
