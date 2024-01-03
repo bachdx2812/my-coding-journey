@@ -22,7 +22,7 @@
           </div>
 
           <div class="mb-5" v-if="model.name">
-            <div class="text-gray-300 text-md mb-2">
+            <div class="text-gray-300 text-md mb-3">
               <span>Add Some Attributes</span>
 
               <span class="float-right">
@@ -36,7 +36,7 @@
               </span>
             </div>
 
-            <v-card v-for="attribute in model.attributes" :key="attribute.id">
+            <v-card v-for="attribute in model.attributes" :key="attribute.id" class="mt-2">
               <v-card-text>
                 <v-text-field v-model="attribute.name" label="Attribute name"></v-text-field>
 
