@@ -6,8 +6,9 @@
       <v-card
         class="mx-auto"
         max-width="344"
+        min-height="150"
         :title="item.name"
-        color="#E0115F"
+        :color="item.color"
         :prepend-icon="item.icon"
         :href="item.path"
       >
