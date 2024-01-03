@@ -98,3 +98,9 @@ watch(
   { immediate: true }
 )
 </script>
+
+<style scoped>
+a {
+  color: var(--c-blue);
+}
+</style>
