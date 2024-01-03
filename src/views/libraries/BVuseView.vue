@@ -1,16 +1,44 @@
 <template>
   <PageHeader title="BVuse, a VueJS Library"></PageHeader>
 
-  <BVuseSummary v-model="functions"></BVuseSummary>
+  <div>
+    <header class="mt-10">
+      <div class="text-sm title white leading-[1.1em] mb-0">
+        <div class="leading-[64px]">
+          <span class="text-4xl font-bold">
+            <span class="mr-2 text-[#e1e1e1] tracking-tight font-serif">
+              A collection of VueJS composables ( Inspired by
+              <a href="https://vueuse.org/">VueUse</a> )
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="mt-2 text-[0.9rem] text-gray-300 leading-relaxed tracking-tight">
+        I made this `library` to use in my daily projects and also can help my collagues with their
+        codes.
+      </div>
+    </header>
 
-  <BVuseItem v-for="item in functions" :item="item"></BVuseItem>
+    <div class="py-5 grid md:grid-cols-1 gap-10">
+      <div class="mb-5">
+        <article class="mb-0">
+          <div class="pt-5 pb-0 white col">
+            <span class="text-gray-300 text-sm tracking-tight">
+              Here are short summary of the functions that this library provides
+            </span>
+
+            <BVuseItem v-for="item in functions" :item="item"></BVuseItem>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
 
 import PageHeader from '@/components/layouts/PageHeader.vue'
-import BVuseSummary from '@/components/libraries/b-vuse/Summary.vue'
 import BVuseItem from '@/components/libraries/b-vuse/Item.vue'
 
 const functions = ref([
