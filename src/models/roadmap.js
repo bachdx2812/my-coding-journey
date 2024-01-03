@@ -1,12 +1,12 @@
-import request from '@/libs/api'
+import BaseDbModel from './baseDbModel'
 
-export default class Roadmap {
+export default class Roadmap extends BaseDbModel {
+  static apiEndpoint = '/roadmaps'
+
   constructor(content) {
-    this.content = content
-  }
+    super()
 
-  static async fetchList() {
-    return this.fromJson(await request('/roadmaps'))
+    this.content = content
   }
 
   static fromJson(jsonData) {
