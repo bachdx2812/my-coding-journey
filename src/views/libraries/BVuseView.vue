@@ -45,7 +45,7 @@ const functions = ref([
   {
     title: 'useBreadcrumb',
     github: 'https://github.com/bachdx2812/b-vuse?tab=readme-ov-file#usebreadcrumb',
-    path: '/tools/b-vuse#useBreadcrumb',
+    path: '/libraries/b-vuse#useBreadcrumb',
     active: false,
     demoCode: `import { useBreadcrumb } from "@bachdx/b-vuse";
         const { setBreadcrumb } = useBreadcrumb();
@@ -67,7 +67,7 @@ const functions = ref([
   {
     title: 'useQuery',
     github: 'https://github.com/bachdx2812/b-vuse?tab=readme-ov-file#usequery',
-    path: '/tools/b-vuse#useQuery',
+    path: '/libraries/b-vuse#useQuery',
     active: false,
     demoCode: `const { queryInput, resetQuery, updateQuery } = useQuery({ perPage: 15 });`
   }

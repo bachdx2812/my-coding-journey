@@ -6,7 +6,7 @@ export default [
     shortName: 'B-VUse',
     icon: 'mdi-vuejs',
     component: BVuseView,
-    path: '/tools/b-vuse',
+    path: '/libraries/b-vuse',
     color: '#3FB883',
     description: 'Collection of VueUse composables that I made for my development with vuejs'
   }
