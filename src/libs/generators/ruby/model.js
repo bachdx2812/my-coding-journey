@@ -3,6 +3,7 @@ import pluralize from 'pluralize'
 
 import SchemaGenerator from './schemaGenerator'
 import ModelGenerator from './modelGenerator'
+import GraphqlInputGenerator from './graphqlInputGenerator'
 
 import ModelAttribute from './modelAttribute'
 
@@ -16,6 +17,7 @@ class Model {
 
     this.schemaScript = null
     this.modelScript = null
+    this.graphqlInputScript = null
   }
 
   setName(name) {
@@ -23,6 +25,7 @@ class Model {
     this.tableName = snakeCase(pluralize(this.name))
     this.className = upperFirst(pluralize(this.name, 1))
     this.modelFileName = lowerCase(pluralize(this.name, 1))
+    this.graphqlInputFileName = `${upperFirst(pluralize(this.name, 1))}Input`
   }
 
   addNewAttribute() {
@@ -42,6 +45,11 @@ class Model {
   async generateModelScript() {
     const modelGenerator = new ModelGenerator(this)
     this.modelScript = await modelGenerator.build()
+  }
+
+  async generateGraphqlInputScript() {
+    const graphqlInputGenerator = new GraphqlInputGenerator(this)
+    this.graphqlInputScript = await graphqlInputGenerator.build()
   }
 }
 

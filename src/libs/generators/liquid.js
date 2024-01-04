@@ -11,6 +11,7 @@ class LiquidTemplate {
 
   registerFilter() {
     this.engine.registerFilter('attributeSchemaLine', (v) => v.generateSchemaLine())
+    this.engine.registerFilter('attributeGraphqlInputLine', (v) => v.generateGraphqlInputLine())
   }
 
   render() {

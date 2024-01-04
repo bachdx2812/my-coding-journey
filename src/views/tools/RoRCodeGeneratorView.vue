@@ -6,8 +6,9 @@
     you too
   </div>
 
-  <div class="py-5 grid md:grid-cols-2 gap-10">
+  <div class="py-5 grid md:grid-cols-1 gap-10">
     <RoRCodeGeneratorInput v-model="model"></RoRCodeGeneratorInput>
+
     <RoRCodeGeneratorOutput v-model="model"></RoRCodeGeneratorOutput>
   </div>
 </template>
