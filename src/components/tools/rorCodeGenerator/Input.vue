@@ -44,9 +44,8 @@
                 clearable
                 chips
                 label="Attribute name"
-                :items="['string', 'text', 'bigint', 'integer', 'boolean']"
+                :items="types.map((t) => t.type)"
               ></v-combobox>
-              <!-- TODO: move TYPES to another place -->
             </v-card-text>
 
             <v-card-actions class="float-right">
@@ -68,6 +67,9 @@
 
 <script setup>
 const model = defineModel()
+
+import types from '@/libs/generators/ruby/types'
+console.log()
 
 function addNewAttribute() {
   model.value.addNewAttribute()

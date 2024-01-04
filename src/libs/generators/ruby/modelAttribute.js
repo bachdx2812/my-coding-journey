@@ -2,6 +2,7 @@ import { Liquid } from 'liquidjs'
 import { AttributeLineTemplate } from '../templates/schemaFileTemplate'
 import { GraphqlInputLineTemplate } from '../templates/graphqlInputTemplate'
 import { v4 as uuidv4 } from 'uuid'
+import types from './types'
 
 class ModelAttribute {
   constructor(name, type) {
@@ -28,22 +29,9 @@ class ModelAttribute {
   }
 
   static toGraphqlType(type) {
-    switch (type) {
-      case 'string':
-        return 'String'
-      case 'bigint':
-        return 'ID'
-      case 'integer':
-        return 'Int'
-      case 'text':
-        return 'String'
-      case 'datetime':
-        return 'GraphQL::Types::ISO8601DateTime'
-      case 'date':
-        return 'GraphQL::Types::ISO8601Date'
-      default:
-        return ''
-    }
+    const found = types.find((t) => t.type == type)
+
+    return found ? found.graphqlType : 'Types::BaseScalar'
   }
 }
 

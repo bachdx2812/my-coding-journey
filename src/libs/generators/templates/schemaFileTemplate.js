@@ -5,6 +5,7 @@ create_table "{{ model.tableName }}", charset: "utf8mb4", collation: "utf8mb4_un
 {%- for attribute in model.attributes %}
   {{ attribute | attributeSchemaLine }}
 {%- endfor %}
+  t.timestamps
 end`
 
 const AttributeLineTemplate = `t.{{type}} :{{name}}`
