@@ -8,54 +8,62 @@
   </header>
 
   <article class="mb-0">
-    <div class="pt-5 pb-0 white col">
+    <div class="pb-0 white col">
       <v-form @submit.prevent>
         <div class="mt-1 mb-1">
-          <span class="text-gray-300 text-md"> Put the name of your desired `model` below </span>
-
-          <v-text-field
-            class="mt-1"
-            label="Model Name"
-            @update:modelValue="model.setName($event)"
-          ></v-text-field>
+          <v-card>
+            <v-card-title>
+              <span class="text-gray-300 text-sm">
+                Put the name of your desired `model` below
+              </span>
+            </v-card-title>
+            <v-card-text>
+              <v-text-field
+                class="mt-1"
+                label="Model Name"
+                @update:modelValue="model.setName($event)"
+              ></v-text-field>
+            </v-card-text>
+          </v-card>
         </div>
 
         <div class="mb-5" v-if="model.name">
-          <div class="text-gray-300 text-md mb-3">
-            <span>Add Some Attributes</span>
+          <v-card>
+            <v-card-title>
+              <span class="text-gray-300 text-sm"> Add Some Attributes </span>
+              <span class="float-right">
+                <v-btn
+                  density="comfortable"
+                  icon="mdi-plus"
+                  size="small"
+                  color="#37A47D"
+                  @click="addNewAttribute"
+                ></v-btn>
+              </span>
+            </v-card-title>
+            <v-card v-for="attribute in model.attributes" :key="attribute.id" class="mt-2">
+              <v-card-text>
+                <v-text-field v-model="attribute.name" label="Attribute name"></v-text-field>
 
-            <span class="float-right">
-              <v-btn
-                type="button"
-                icon="mdi-plus"
-                size="x-small"
-                block
-                @click="addNewAttribute"
-              ></v-btn>
-            </span>
-          </div>
+                <v-combobox
+                  v-model="attribute.type"
+                  clearable
+                  chips
+                  label="Attribute name"
+                  :items="types.map((t) => t.type)"
+                ></v-combobox>
+              </v-card-text>
 
-          <v-card v-for="attribute in model.attributes" :key="attribute.id" class="mt-2">
-            <v-card-text>
-              <v-text-field v-model="attribute.name" label="Attribute name"></v-text-field>
-
-              <v-combobox
-                v-model="attribute.type"
-                clearable
-                chips
-                label="Attribute name"
-                :items="types.map((t) => t.type)"
-              ></v-combobox>
-            </v-card-text>
-
-            <v-card-actions class="float-right">
-              <v-btn
-                type="button"
-                icon="mdi-delete"
-                size="x-small"
-                @click="removeAttribute(attribute)"
-              ></v-btn>
-            </v-card-actions>
+              <v-card-actions class="float-right">
+                <v-btn
+                  density="comfortable"
+                  icon="mdi-delete"
+                  size="small"
+                  color="red-accent-4"
+                  @click="removeAttribute(attribute)"
+                ></v-btn>
+              </v-card-actions>
+            </v-card>
           </v-card>
         </div>
 
@@ -69,7 +77,6 @@
 const model = defineModel()
 
 import types from '@/libs/generators/ruby/types'
-console.log()
 
 function addNewAttribute() {
   model.value.addNewAttribute()
