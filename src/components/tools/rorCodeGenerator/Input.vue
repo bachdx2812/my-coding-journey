@@ -41,7 +41,8 @@
                 ></v-btn>
               </span>
             </v-card-title>
-            <v-card v-for="attribute in model.attributes" :key="attribute.id" class="mt-2">
+
+            <v-card v-for="attribute in model.attributes" :key="attribute.id" class="mt-5">
               <v-card-text>
                 <v-text-field v-model="attribute.name" label="Attribute name"></v-text-field>
 
@@ -87,9 +88,12 @@ function removeAttribute(attribute) {
 }
 
 async function generate() {
-  await model.value.generateSchemaScript()
-  await model.value.generateModelScript()
-  await model.value.generateGraphqlInputScript()
+  await Promise.all([
+    model.value.generateSchemaScript(),
+    model.value.generateModelScript(),
+    model.value.generateGraphqlInputScript(),
+    model.value.generateGraphqlTypeScript()
+  ])
 }
 </script>
 

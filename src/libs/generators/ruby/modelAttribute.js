@@ -1,6 +1,7 @@
 import { Liquid } from 'liquidjs'
 import { AttributeLineTemplate } from '../templates/schemaFileTemplate'
 import { GraphqlInputLineTemplate } from '../templates/graphqlInputTemplate'
+import { GraphqlTypeLineTemplate } from '../templates/graphqlTypeTemplate'
 import { v4 as uuidv4 } from 'uuid'
 import types from './types'
 
@@ -23,6 +24,14 @@ class ModelAttribute {
   generateGraphqlInputLine() {
     const engine = new Liquid()
     const tpl = engine.parse(GraphqlInputLineTemplate)
+
+    this.graphqlType = ModelAttribute.toGraphqlType(this.type)
+    return engine.render(tpl, { name: this.name, graphqlType: this.graphqlType })
+  }
+
+  generateGraphqlTypeLine() {
+    const engine = new Liquid()
+    const tpl = engine.parse(GraphqlTypeLineTemplate)
 
     this.graphqlType = ModelAttribute.toGraphqlType(this.type)
     return engine.render(tpl, { name: this.name, graphqlType: this.graphqlType })

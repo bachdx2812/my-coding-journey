@@ -26,7 +26,7 @@
             ></v-textarea>
           </div>
 
-          <div class="pt-3 text-lg title white leading-[0.8em] mb-0">
+          <div class="pt-3 text-lg title white leading-[1.1em] mb-0">
             <span class="pb-16 borderbottom leading-[16px]">
               <span class="text-[#e1e1e1] mr-2 font-serif font-bold"> Model File </span>
 
@@ -67,6 +67,28 @@
               auto-grow
               v-model="model.graphqlInputScript"
               :label="`${model.graphqlInputFileName}.rb`"
+            ></v-textarea>
+          </div>
+
+          <div class="pt-3 text-lg title white leading-[1.1em] mb-0">
+            <span class="pb-16 borderbottom leading-[16px]">
+              <span class="text-[#e1e1e1] mr-2 font-serif font-bold"> Graphql Type File </span>
+
+              <span class="float-right">
+                <v-btn
+                  density="comfortable"
+                  :icon="grapqlTypeScriptCopied ? 'mdi-check' : 'mdi-content-copy'"
+                  size="small"
+                  color="#37A47D"
+                  @click="copyGrapqlTypeScript"
+                ></v-btn>
+              </span>
+            </span>
+
+            <v-textarea
+              auto-grow
+              v-model="model.graphqlTypeScript"
+              :label="`${model.graphqlTypeFileName}.rb`"
             ></v-textarea>
           </div>
         </div>
@@ -111,5 +133,15 @@ async function copyGrapqlInputScript() {
   await new Promise((r) => setTimeout(r, 1500))
 
   grapqlInputScriptCopied.value = false
+}
+
+const grapqlTypeScriptCopied = ref(false)
+async function copyGrapqlTypeScript() {
+  await copy(model.value.graphqlTypeScript)
+  grapqlTypeScriptCopied.value = true
+
+  await new Promise((r) => setTimeout(r, 1500))
+
+  grapqlTypeScriptCopied.value = false
 }
 </script>
