@@ -102,7 +102,7 @@ import { ref } from 'vue'
 import { useClipboard } from '@vueuse/core'
 
 const model = defineModel()
-const { copy, copied } = useClipboard()
+const { copy } = useClipboard()
 
 const schemaScriptCopied = ref(false)
 

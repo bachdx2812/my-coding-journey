@@ -3,11 +3,23 @@
     <PageHeader title="Roadmap"></PageHeader>
 
     <h2>What you can expect in the future</h2>
-    <ul>
-      <li v-for="item in roadmaps">
-        {{ item }}
-      </li>
-    </ul>
+
+    <table class="text-emerald-400 tracking-[-0.5px]">
+      <tbody>
+        <tr v-for="(item, index) in roadmaps">
+          <td>
+            <span class="mr-2 font-mono"> {{ index }}: </span>
+          </td>
+          <td>
+            <span class="text-yellow-300" v-if="item.done">
+              ︎<v-icon icon="mdi-check"></v-icon>
+            </span>
+
+            {{ item.title }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -27,3 +39,9 @@ async function fetchList() {
 
 fetchList()
 </script>
+
+<style scoped>
+.max-height-10 {
+  max-height: 10px;
+}
+</style>
