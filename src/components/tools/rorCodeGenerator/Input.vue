@@ -42,28 +42,35 @@
               </span>
             </v-card-title>
 
-            <v-card v-for="attribute in model.attributes" :key="attribute.id" class="mt-5">
+            <v-card v-for="attribute in model.attributes" :key="attribute.id">
               <v-card-text>
-                <v-text-field v-model="attribute.name" label="Attribute name"></v-text-field>
+                <v-container>
+                  <v-row fill-height fluid>
+                    <v-col>
+                      <v-text-field v-model="attribute.name" label="name"></v-text-field>
+                    </v-col>
 
-                <v-combobox
-                  v-model="attribute.type"
-                  clearable
-                  chips
-                  label="Attribute name"
-                  :items="types.map((t) => t.type)"
-                ></v-combobox>
+                    <v-col>
+                      <v-combobox
+                        v-model="attribute.type"
+                        clearable
+                        chips
+                        label="type"
+                        :items="types.map((t) => t.type)"
+                      ></v-combobox>
+                    </v-col>
+
+                    <v-btn
+                      class="float-right mt-6"
+                      density="comfortable"
+                      icon="mdi-delete"
+                      size="small"
+                      color="red-accent-4"
+                      @click="removeAttribute(attribute)"
+                    ></v-btn>
+                  </v-row>
+                </v-container>
               </v-card-text>
-
-              <v-card-actions class="float-right">
-                <v-btn
-                  density="comfortable"
-                  icon="mdi-delete"
-                  size="small"
-                  color="red-accent-4"
-                  @click="removeAttribute(attribute)"
-                ></v-btn>
-              </v-card-actions>
             </v-card>
           </v-card>
         </div>
