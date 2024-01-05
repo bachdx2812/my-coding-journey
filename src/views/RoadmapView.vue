@@ -2,6 +2,8 @@
   <div class="mt-2 mb-20" id="content">
     <PageHeader title="Roadmap"></PageHeader>
 
+    <p>Last updated: {{ latestUpdatedAt }}</p>
+
     <h2>What you can expect in the future</h2>
 
     <table class="text-emerald-400 tracking-[-0.5px]">
@@ -32,9 +34,13 @@ import PageHeader from '@/components/layouts/PageHeader.vue'
 import RoadMapModel from '@/models/roadmap'
 
 const roadmaps = ref([])
+const latestUpdatedAt = ref(null)
 
 async function fetchList() {
-  roadmaps.value = await RoadMapModel.fetchList()
+  const response = await RoadMapModel.fetchList()
+
+  roadmaps.value = response['list']
+  latestUpdatedAt.value = response['latestUpdatedAt']
 }
 
 fetchList()

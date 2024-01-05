@@ -11,10 +11,13 @@ export default class Roadmap extends BaseDbModel {
   }
 
   static fromJson(jsonData) {
-    const result = []
+    const list = []
 
-    jsonData.forEach((item) => result.push(new Roadmap(item.title, item.done)))
+    jsonData['list'].forEach((item) => list.push(new Roadmap(item.title, item.done)))
 
-    return result
+    return {
+      list: list,
+      latestUpdatedAt: jsonData['updatedAt']
+    }
   }
 }
