@@ -8,9 +8,15 @@
         <p class="mt-5 mb-5 font-mono text-sm">/* My web <br />development <br />having fun */</p>
       </div>
       <div class="mt-0 text-emerald-400 font-mono text-sm">
-        <p><a href="/changelog">[changelog]</a></p>
-        <p><a href="/roadmap">[roadmap]</a></p>
-        <p><a href="/about">[about]</a></p>
+        <p>
+          <router-link to="/changelog">[changelog]</router-link>
+        </p>
+        <p>
+          <router-link to="/roadmap">[roadmap]</router-link>
+        </p>
+        <p>
+          <router-link to="/about">[about]</router-link>
+        </p>
       </div>
       <div class="mt-6">
         <table class="text-emerald-400 tracking-[-0.5px]">

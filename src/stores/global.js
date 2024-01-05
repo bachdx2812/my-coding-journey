@@ -1,13 +1,7 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-const defaultSidebarMenus = [
-  {
-    title: 'Tools & Libraries',
-    path: '/tools_and_libraries'
-  }
-]
-// TODO: move to model
+import defaultSidebarMenus from '../constants/defaultSidebarMenus'
 
 export const useGlobalStore = defineStore('global', () => {
   const loading = ref(false)
