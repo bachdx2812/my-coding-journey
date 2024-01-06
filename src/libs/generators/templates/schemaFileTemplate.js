@@ -8,6 +8,6 @@ create_table "{{ model.tableName }}", charset: "utf8mb4", collation: "utf8mb4_un
   t.timestamps
 end`
 
-const AttributeLineTemplate = `t.{{type}} :{{name}}`
+const AttributeLineTemplate = `t.{{type}} :{{name}}, default: {{default}}, {{nullable}}`
 
 export { SchemaFileContentTemplate, AttributeLineTemplate }

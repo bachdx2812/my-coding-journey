@@ -60,6 +60,14 @@
                       ></v-combobox>
                     </v-col>
 
+                    <v-col>
+                      <v-checkbox label="Nullable?" v-model="attribute.nullable"></v-checkbox>
+                    </v-col>
+
+                    <v-col>
+                      <v-text-field v-model="attribute.defaultValue" label="default"></v-text-field>
+                    </v-col>
+
                     <v-btn
                       class="float-right mt-6"
                       density="comfortable"

@@ -6,19 +6,26 @@ import { v4 as uuidv4 } from 'uuid'
 import types from './types'
 
 class ModelAttribute {
-  constructor(name, type) {
+  constructor(name, type, nullable, defaultValue) {
     this.id = uuidv4()
     this.name = name
     this.type = type
-
-    // TODO: add default
-    // TODO: add nullable
+    this.nullable = nullable
+    this.defaultValue = defaultValue
   }
 
   generateSchemaLine() {
     const engine = new Liquid()
     const tpl = engine.parse(AttributeLineTemplate)
-    return engine.render(tpl, { name: this.name, type: this.type })
+
+    const nullableScript = `null: ${this.nullable ? 'true' : 'false'}`
+
+    return engine.render(tpl, {
+      name: this.name,
+      type: this.type,
+      default: this.defaultValue,
+      nullable: nullableScript
+    })
   }
 
   generateGraphqlInputLine() {
