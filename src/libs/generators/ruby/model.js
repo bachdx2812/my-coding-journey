@@ -38,10 +38,10 @@ class Model {
     this.modelClassName = upperFirst(pluralize(this.name, 1))
 
     this.graphqlInputFileName = `${snakeCase(pluralize(this.name, 1))}_input.rb`
-    this.graphqlInputClassName = `${this.className}Input`
+    this.graphqlInputClassName = `${this.modelClassName}Input`
 
     this.graphqlTypeFileName = `${snakeCase(pluralize(this.name, 1))}_type.rb`
-    this.graphqlTypeClassName = `${this.className}Type`
+    this.graphqlTypeClassName = `${this.modelClassName}Type`
   }
 
   addNewAttribute() {
