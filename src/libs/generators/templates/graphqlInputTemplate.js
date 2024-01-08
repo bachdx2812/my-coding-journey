@@ -1,4 +1,4 @@
-const GraphqlInputTemplate = `class {{ model.graphqlInputFileName }} < ::Types::BaseInputObject
+const GraphqlInputTemplate = `class {{ model.graphqlInputClassName }} < ::Types::BaseInputObject
   graphql_name "{{ model.graphqlInputFileName }}"
   description "{{ model.graphqlInputFileName }}"
 

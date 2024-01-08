@@ -11,24 +11,37 @@ import ModelAttribute from './modelAttribute'
 class Model {
   constructor(name, attributes) {
     this.attributes = attributes
-    this.setName(name)
+
     // TODO: add table charset, default: "utf8mb4"
     // TODO: add table collation, default: "utf8mp4_unicode_ci"
     // TODO: add indexes
 
     this.schemaScript = null
     this.modelScript = null
+
+    this.graphqlInputFileName = null
     this.graphqlInputScript = null
+
+    this.graphqlTypeFileName = null
     this.graphqlTypeScript = null
+
+    this.setNames(name)
   }
 
-  setName(name) {
+  setNames(name) {
     this.name = name
-    this.tableName = snakeCase(pluralize(this.name))
-    this.className = upperFirst(pluralize(this.name, 1))
-    this.modelFileName = lowerCase(pluralize(this.name, 1))
-    this.graphqlInputFileName = `${this.className}Input`
-    this.graphqlTypeFileName = `${this.className}Type`
+
+    this.schemaFileName = `${snakeCase(lowerCase(pluralize(this.name)))}.schema`
+    this.tableName = `${snakeCase(lowerCase(pluralize(this.name)))}`
+
+    this.modelFileName = `${lowerCase(pluralize(this.name, 1))}.rb`
+    this.modelClassName = upperFirst(pluralize(this.name, 1))
+
+    this.graphqlInputFileName = `${snakeCase(pluralize(this.name, 1))}_input.rb`
+    this.graphqlInputClassName = `${this.className}Input`
+
+    this.graphqlTypeFileName = `${snakeCase(pluralize(this.name, 1))}_type.rb`
+    this.graphqlTypeClassName = `${this.className}Type`
   }
 
   addNewAttribute() {

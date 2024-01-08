@@ -12,6 +12,7 @@
   "dependencies": {
     "@bachdx/b-vuse": "^1.1.4",
     "@vueuse/core": "^10.7.1",
+    "file-saver": "^2.0.5",
     "liquidjs": "^10.9.4",
     "lodash": "^4.17.21",
     "pinia": "^2.1.7",

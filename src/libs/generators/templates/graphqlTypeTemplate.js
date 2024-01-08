@@ -1,4 +1,4 @@
-const GraphqlTypeTemplate = `class {{ model.graphqlTypeFileName }} < Types::BaseObject
+const GraphqlTypeTemplate = `class {{ model.graphqlTypeClassName }} < Types::BaseObject
   graphql_name "{{ model.graphqlTypeFileName }}"
   description "{{ model.graphqlTypeFileName }}"
 

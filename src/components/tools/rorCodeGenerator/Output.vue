@@ -8,7 +8,8 @@
           <div class="pt-3 text-lg title white leading-[1.1em] mb-0">
             <span class="pb-16 borderbottom leading-[16px]">
               <span class="text-[#e1e1e1] mr-2 font-serif font-bold"> Schema File </span>
-              <span class="float-right">
+
+              <span class="float-right mt-3 ml-1">
                 <v-btn
                   density="comfortable"
                   :icon="schemaScriptCopied ? 'mdi-check' : 'mdi-content-copy'"
@@ -16,13 +17,25 @@
                   color="#37A47D"
                   @click="copySchemaScript"
                 ></v-btn>
+
+                <br />
+
+                <v-btn
+                  class="mt-1"
+                  density="comfortable"
+                  icon="mdi-content-save"
+                  size="small"
+                  color="#37A47D"
+                  @click="saveFile(model.schemaFileName, model.schemaScript)"
+                >
+                </v-btn>
               </span>
             </span>
 
             <v-textarea
               auto-grow
               v-model="model.schemaScript"
-              :label="`${model.tableName}.schema`"
+              :label="model.schemaFileName"
             ></v-textarea>
           </div>
 
@@ -30,7 +43,7 @@
             <span class="pb-16 borderbottom leading-[16px]">
               <span class="text-[#e1e1e1] mr-2 font-serif font-bold"> Model File </span>
 
-              <span class="float-right">
+              <span class="float-right mt-3 ml-1">
                 <v-btn
                   density="comfortable"
                   :icon="modelScriptCopied ? 'mdi-check' : 'mdi-content-copy'"
@@ -38,13 +51,25 @@
                   color="#37A47D"
                   @click="copyModelScript"
                 ></v-btn>
+
+                <br />
+
+                <v-btn
+                  class="mt-1"
+                  density="comfortable"
+                  icon="mdi-content-save"
+                  size="small"
+                  color="#37A47D"
+                  @click="saveFile(model.modelFileName, model.modelScript)"
+                >
+                </v-btn>
               </span>
             </span>
 
             <v-textarea
               auto-grow
               v-model="model.modelScript"
-              :label="`${model.modelFileName}.rb`"
+              :label="model.modelFileName"
             ></v-textarea>
           </div>
 
@@ -52,7 +77,7 @@
             <span class="pb-16 borderbottom leading-[16px]">
               <span class="text-[#e1e1e1] mr-2 font-serif font-bold"> Graphql Input File </span>
 
-              <span class="float-right">
+              <span class="float-right mt-3 ml-1">
                 <v-btn
                   density="comfortable"
                   :icon="grapqlInputScriptCopied ? 'mdi-check' : 'mdi-content-copy'"
@@ -60,13 +85,25 @@
                   color="#37A47D"
                   @click="copyGrapqlInputScript"
                 ></v-btn>
+
+                <br />
+
+                <v-btn
+                  class="mt-1"
+                  density="comfortable"
+                  icon="mdi-content-save"
+                  size="small"
+                  color="#37A47D"
+                  @click="saveFile(model.graphqlInputFileName, model.graphqlInputScript)"
+                >
+                </v-btn>
               </span>
             </span>
 
             <v-textarea
               auto-grow
               v-model="model.graphqlInputScript"
-              :label="`${model.graphqlInputFileName}.rb`"
+              :label="model.graphqlInputFileName"
             ></v-textarea>
           </div>
 
@@ -74,7 +111,7 @@
             <span class="pb-16 borderbottom leading-[16px]">
               <span class="text-[#e1e1e1] mr-2 font-serif font-bold"> Graphql Type File </span>
 
-              <span class="float-right">
+              <span class="float-right mt-3 ml-1">
                 <v-btn
                   density="comfortable"
                   :icon="grapqlTypeScriptCopied ? 'mdi-check' : 'mdi-content-copy'"
@@ -82,13 +119,25 @@
                   color="#37A47D"
                   @click="copyGrapqlTypeScript"
                 ></v-btn>
+
+                <br />
+
+                <v-btn
+                  class="mt-1"
+                  density="comfortable"
+                  icon="mdi-content-save"
+                  size="small"
+                  color="#37A47D"
+                  @click="saveFile(model.graphqlTypeFileName, model.graphqlTypeScript)"
+                >
+                </v-btn>
               </span>
             </span>
 
             <v-textarea
               auto-grow
               v-model="model.graphqlTypeScript"
-              :label="`${model.graphqlTypeFileName}.rb`"
+              :label="model.graphqlTypeFileName"
             ></v-textarea>
           </div>
         </div>
@@ -100,6 +149,13 @@
 <script setup>
 import { ref } from 'vue'
 import { useClipboard } from '@vueuse/core'
+
+import { saveAs } from 'file-saver'
+
+function saveFile(fileName, fileContent) {
+  const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' })
+  saveAs(blob, fileName)
+}
 
 const model = defineModel()
 const { copy } = useClipboard()

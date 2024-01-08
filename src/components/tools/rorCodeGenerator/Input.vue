@@ -21,7 +21,7 @@
               <v-text-field
                 class="mt-1"
                 label="Model Name"
-                @update:modelValue="model.setName($event)"
+                @update:modelValue="model.setNames($event)"
               ></v-text-field>
             </v-card-text>
           </v-card>
