@@ -12,16 +12,19 @@ export default class ChangeLogPeriod extends BaseDbModel {
   }
 
   static fromJson(jsonData) {
-    const result = []
+    const list = []
 
-    for (const [key, items] of Object.entries(jsonData)) {
+    for (const [key, items] of Object.entries(jsonData['list'])) {
       const changeLogItems = []
 
       items.forEach((item) => changeLogItems.push(new ChangeLogItem(item)))
 
-      result.push(new ChangeLogPeriod(key, changeLogItems))
+      list.push(new ChangeLogPeriod(key, changeLogItems))
     }
 
-    return result
+    return {
+      list: list,
+      latestUpdatedAt: jsonData['updatedAt']
+    }
   }
 }

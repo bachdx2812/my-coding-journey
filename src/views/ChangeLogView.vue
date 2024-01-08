@@ -2,6 +2,8 @@
   <div class="mt-2 mb-20" id="content">
     <PageHeader title="Changelog"></PageHeader>
 
+    <p>Last updated: {{ latestUpdatedAt }}</p>
+
     <ChangeLogPeriodComponent
       v-for="changeLogPeriod in changeLogs"
       :key="changeLogPeriod.period"
@@ -20,9 +22,12 @@ import ChangeLogPeriodComponent from '@/components/ChangeLogPeriodItem.vue'
 import ChangeLogPeriodModel from '@/models/changeLogPeriod'
 
 const changeLogs = ref([])
+const latestUpdatedAt = ref(null)
 
 async function fetchList() {
-  changeLogs.value = await ChangeLogPeriodModel.fetchList()
+  const response = await ChangeLogPeriodModel.fetchList()
+  changeLogs.value = response['list']
+  latestUpdatedAt.value = response['latestUpdatedAt']
 }
 
 fetchList()
