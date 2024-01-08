@@ -12,6 +12,9 @@
         :prepend-icon="item.icon"
         :href="item.path"
       >
+        <v-chip size="small" variant="elevated" class="ml-2" v-for="tag in item.tags">
+          #{{ tag }}
+        </v-chip>
         <v-card-text>{{ item.description }}</v-card-text>
       </v-card>
     </v-col>

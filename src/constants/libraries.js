@@ -5,6 +5,7 @@ export default [
     name: 'B-VUse, a VueJS library',
     shortName: 'B-VUse',
     icon: 'mdi-vuejs',
+    tags: ['vuejs', 'library'],
     component: BVuseView,
     path: '/libraries/b-vuse',
     color: '#3FB883',
