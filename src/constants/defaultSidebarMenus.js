@@ -6,5 +6,9 @@ export default [
   {
     title: 'How Series',
     path: '/how_series'
+  },
+  {
+    title: 'Tips And Tricks',
+    path: '/tips_and_tricks'
   }
 ]

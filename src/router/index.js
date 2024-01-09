@@ -7,6 +7,7 @@ import RoadmapView from '../views/RoadmapView.vue'
 
 import toolsRouters from './tools'
 import howSeriesRouters from './howSeries'
+import tipsAndTricksRouters from './tipsAndTricks'
 
 const router = createRouter({
   scrollBehavior(to, _from, _savedPosition) {
@@ -43,7 +44,8 @@ const router = createRouter({
       component: RoadmapView
     },
     ...toolsRouters,
-    ...howSeriesRouters
+    ...howSeriesRouters,
+    ...tipsAndTricksRouters
   ]
 })
 
