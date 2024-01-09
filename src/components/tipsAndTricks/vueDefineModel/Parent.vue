@@ -27,8 +27,8 @@
 </template>
 
 <script setup>
-import Children from '@/components/tipsAndTricks/VueDefineModel/Children.vue'
-import Result from '@/components/tipsAndTricks/VueDefineModel/Result.vue'
+import Children from '@/components/tipsAndTricks/vueDefineModel/Children.vue'
+import Result from '@/components/tipsAndTricks/vueDefineModel/Result.vue'
 
 import { ref } from 'vue'
 const testObj = ref('')

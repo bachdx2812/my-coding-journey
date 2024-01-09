@@ -52,7 +52,7 @@
         </li>
 
         <li>
-          You can check the code of `parent` and `children`
+          You can check the code of `parent` and `children` <a href="https://github.com/bachdx2812/my-coding-journey/tree/main/src/components/tipsAndTricks/vueDefineModel" target="_blank">here</a> for more details 
         </li>
       </ul>
     </p>
@@ -60,9 +60,7 @@
 </template>
 
 <script setup>
-
-
 import PageHeader from '@/components/layouts/PageHeader.vue'
 
-import Parent from '@/components/tipsAndTricks/VueDefineModel/Parent.vue'
+import Parent from '@/components/tipsAndTricks/vueDefineModel/Parent.vue'
 </script>
