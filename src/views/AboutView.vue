@@ -15,11 +15,18 @@
       <strong>My Coding Journey</strong> is a website to store my programing experiences, and to
       sharing my knowledge.
     </p>
-    <p>Created and ran by <a href="https://github.com/bachdx2812">Bachdx</a>.</p>
+    <p>Created and ran by <a href="https://github.com/bachdx2812" target="_blank">Bachdx</a>.</p>
+    <p>
+      With much contibutions from 
+      <ul>
+        <li><a href="https://github.com/bachdx2812" target="_blank">Phucnm</a></li>
+      </ul>
+    </p>
     <p>
       The vision for <strong>My Coding Journey</strong> is to be a website you can find interesting
       knowledge, tricky part on the way as a developer.
     </p>
     <p>Also I will make some `tools` to help my works also and post here. So, enjoy it</p>
+    <p>Last but not least, please be my guest to contribute to the website by email me at <a href="mailto:bachdx.hut@gmail.com">Bachdx</a> </p>
   </div>
 </template>
