@@ -6,7 +6,7 @@
       <v-card
         class="mx-auto"
         max-width="344"
-        min-height="150"
+        min-height="200"
         :title="item.shortName"
         :color="item.color"
         :prepend-icon="item.icon"

@@ -9,6 +9,10 @@ export default [
     component: BVuseView,
     path: '/libraries/b-vuse',
     color: '#3FB883',
-    description: 'Collection of VueUse composables that I made for my development with vuejs'
+    description: 'Collection of VueUse composables that I made for my development with vuejs',
+    author: {
+      name: 'bachdx',
+      github: 'https://github.com/bachdx2812'
+    }
   }
 ]
