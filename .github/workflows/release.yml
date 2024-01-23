@@ -25,7 +25,7 @@ jobs:
             cd /root/my-coding-journey
             git pull origin main
             yarn install
-            yarn build
+            VITE_SERVER_URL="https://my-coding-journey.com/api" yarn build
             rm -rf /var/www/html/dist
             cp -r dist /var/www/html
             chown -R www-data:www-data /var/www/html/dist
